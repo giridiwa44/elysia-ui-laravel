@@ -1,0 +1,20 @@
+[
+    {
+        "icon":"📕",
+        "title":"Introduction",
+        "content":"Perkenalan Elysia UI",
+        "url":"/docs/introduction"
+    },
+    {
+        "icon":"📕",
+        "title": "Getting Started",
+        "content": "Cara Untuk memulai Elysia JS",
+        "url": "/docs/getting-started"
+    },
+    {
+        "icon":"📕",
+        "title": "Modal Component",
+        "content": "Modal digunakan untuk dialog...",
+        "url": "/docs/components/modal"
+    }
+]

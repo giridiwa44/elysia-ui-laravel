@@ -1,0 +1,1 @@
+<button class="px-4 py-2 rounded-lg font-medium bg-elysia-primary text-elysia-dark hover:bg-elysia-hover hover:text-white active:scale-95 trasition cursor-pointer">{{ $slot }}</button>

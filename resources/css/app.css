@@ -1,0 +1,47 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    /* Color Background */
+    --color-theme:oklch(87.2% 0.01 258.338);
+    --color-elysia-primary:#F4A9D9;
+    --color-elysia-secondary:#9D6CE5;
+    --color-elysia-success:#5EC8E5;
+    --color-elysia-info:#5EC8E5;
+    --color-elysia-accent:#D9A441;
+    --color-elysia-dark: #1A1A1A;
+    --color-elysia-neutral: #ffffff;
+    --color-elysia-border:#4B4B4B;
+    --color-elysia-mutted: oklch(70.7% 0.022 261.325);
+    --color-elysia-hover:#ca72a5;
+
+    /* Color Theming */
+    --color-secondary-50 : var(--color-zinc-50);
+    --color-secondary-100: var(--color-zinc-100);
+    --color-secondary-200: var(--color-zinc-200);
+    --color-secondary-300: var(--color-zinc-300);
+    --color-secondary-400: var(--color-zinc-400);
+    --color-secondary-500: var(--color-zinc-500);
+    --color-secondary-600: var(--color-zinc-600);
+    --color-secondary-700: var(--color-zinc-700);
+    --color-secondary-800: var(--color-zinc-800);
+    --color-secondary-900: var(--color-zinc-900);
+    --color-secondary-950: var(--color-zinc-950);
+
+
+    /* Font Theme */
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+.wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100rem;
+    padding-left: 1.7rem;
+    padding-right: 1.7rem
+}

@@ -171,6 +171,6 @@
             </div>
             <div class="mt-10 flex flex-col gap-6 rounded-lg bg-secondary-100 p-4 text-center text-sm md:-mx-4 md:flex-row-reverse md:justify-between md:gap-0 md:text-left dark:bg-secondary-800/35"><div class="flex items-center justify-center gap-1 font-semibold text-secondary-500 dark:text-secondary-400"><span>Crafted With</span>❤<span> by <a href="/" class="transition font-medium text-secondary-700 underline decoration-secondary-500/50 underline-offset-2 hover:text-black dark:text-secondary-300 dark:decoration-secondary-400/50 dark:hover:text-white">Elysia Ui</a></div><div class="text-secondary-700 dark:text-secondary-300"><span class="font-semibold">Elysia UI</span> © 2025</div>
         </div>
-            <div class="flex items-center justify-center gap-2 pt-10 font-medium"><span class="text-sm">Designed with</span><a href="/" class="group flex items-center gap-1">❤</span></a></div>
+            <div class="flex items-center justify-center gap-2 pt-10 font-medium"><span class="text-sm">Designed with</span><a href="/" class="group flex items-center gap-1">❤</span> Giri Diwa Adam</a></div>
     </footer>
 @endsection

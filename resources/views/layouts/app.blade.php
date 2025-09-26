@@ -15,15 +15,21 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="antialiased">
+<body class="antialiased scroll-smooth">
     <div id="page-container"
         class="mx-auto flex min-h-dvh w-full min-w-[320px] flex-col bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200">
         <div id="page-container" class="flex h-full max-w-full flex-auto flex-col">
             @yield('content')
         </div>
     </div>
-    <!-- GSAP JS -->
+    <!-- Lenis JS -->
+    <script src="https://unpkg.com/lenis@1.3.11/dist/lenis.min.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<!-- ScrollSmoother requires ScrollTrigger -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
+
+    <!-- GSAP JS -->
 
     <!-- Alphine Script -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>

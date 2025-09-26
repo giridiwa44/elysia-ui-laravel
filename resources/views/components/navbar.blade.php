@@ -13,7 +13,7 @@
             </a>
         </div>
         <div class="flex items-center">
-            <nav class="mr-1.5 hidden items-center gap-7 lg:flex">
+            <nav x-data="{ open: false }" class="mr-1.5 hidden items-center gap-7 lg:flex">
                 <a class="group relative text-sm font-semibold text-secondary-900 hover:text-black dark:text-secondary-100 dark:hover:text-white"
                     href="/">
                     <span
@@ -99,6 +99,7 @@
                     </div>
 
                 </div>
+                
             </nav>
             <div
                 class="mx-6 hidden h-8 w-px bg-linear-to-b from-transparent via-secondary-200 to-transparent lg:block dark:via-secondary-700">
@@ -138,6 +139,7 @@
                     </svg>
                 </button>
 
+          
             </div>
         </div>
     </div>

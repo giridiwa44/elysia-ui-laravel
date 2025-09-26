@@ -26,18 +26,79 @@
                         class="absolute -inset-x-2.5 -inset-y-1.5 rounded-xl bg-secondary-100 dark:bg-secondary-700/50 scale-0 transition ease-out group-hover:scale-100 group-active:scale-105 group-active:bg-secondary-200 dark:group-active:bg-secondary-700/75"></span>
                     <span class="relative grow">Component</span>
                 </a>
-                <a href="#" @click.prevent="open = true"
-                    class="px-2 py-1 bg-white border border-elysia-border/20 rounded-lg hover:border-elysia-primary flex items-center cursor-text dark:bg-secondary-700/50 dark:text-white">
-                    <span class="mr-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
-                            stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-search-icon lucide-search w-4 h-4">
-                            <path d="m21 21-4.34-4.34" />
-                            <circle cx="11" cy="11" r="8" />
-                        </svg></span>
-                    <span class="font-sans text-elysia-dark/20 dark:text-white">Quick Search ...</span>
-                    <kbd class="ml-2 border border-slate-200 py-0 px-2 rounded text-[16px]">CTRL K</kbd>
-                </a>
+                <div x-data="docSearch()" x-init="init()">
+                    <button @click="open = true"
+                        class="px-2 py-1 bg-white border border-elysia-border/20 rounded-lg hover:border-elysia-primary flex items-center cursor-pointer dark:bg-secondary-700/50 dark:text-white">
+                        <span class="mr-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
+                                stroke-linecap="round" stroke-linejoin="round"
+                                class="lucide lucide-search-icon lucide-search w-4 h-4">
+                                <path d="m21 21-4.34-4.34" />
+                                <circle cx="11" cy="11" r="8" />
+                            </svg></span>
+                        <span class="font-sans text-elysia-dark/20 dark:text-white">Quick Search ...</span>
+                        <kbd class="ml-2 border border-slate-200 py-0 px-2 rounded text-[16px]">CTRL K</kbd>
+                    </button>
+                    <div x-show="open" @keydown.window.cmd.k.prevent="open = !open"
+                        @keydown.window.ctrl.k.prevent="open = !open" @keydown.escape.window="open = false">
+
+                        <!-- Trigger ada di atas -->
+
+                        <!-- Modal -->
+                        <template x-teleport="body">
+    <div x-show="open" class="fixed inset-0 bg-black/50 flex items-start justify-center z-50 p-4">
+        <div class="bg-white dark:bg-gray-900 w-full max-w-xl rounded-lg shadow-lg overflow-hidden">
+
+            <!-- Input -->
+            <div class="relative">
+                <span class="absolute inset-y-0 left-3 flex items-center text-gray-400">
+                    <!-- Icon search -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="m21 21-4.34-4.34" />
+                    </svg>
+                </span>
+                <input type="text" x-model="query" placeholder="Cari komponen..."
+                    class="w-full pl-10 pr-4 py-3 border-b border-gray-200 dark:border-gray-700 outline-none bg-transparent dark:text-white">
+            </div>
+
+            <!-- Hasil Pencarian -->
+            <div class="max-h-72 overflow-y-auto">
+                <template x-for="(group, category) in groupedResults" :key="category">
+                    <div>
+                        <!-- Header kategori -->
+                        <div class="px-4 py-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-800">
+                            <span x-text="category"></span>
+                        </div>
+                        <!-- Item -->
+                        <ul>
+                            <template x-for="item in group" :key="item.url">
+                                <li>
+                                    <a :href="item.url"
+                                        class="flex items-center gap-3 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-white text-gray-700">
+                                        <span x-text="item.icon"></span>
+                                        <span x-text="item.title"></span>
+                                    </a>
+                                </li>
+                            </template>
+                        </ul>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Footer -->
+            <div class="flex justify-between items-center px-4 py-3 text-xs text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-gray-800">
+                <span>Press <kbd class="px-1 py-0.5 border rounded">ESC</kbd> to close</span>
+                <span>Use <kbd class="px-1 py-0.5 border rounded">↑</kbd> / <kbd class="px-1 py-0.5 border rounded">↓</kbd></span>
+            </div>
+        </div>
+    </div>
+</template>
+
+                    </div>
+
+                </div>
             </nav>
             <div
                 class="mx-6 hidden h-8 w-px bg-linear-to-b from-transparent via-secondary-200 to-transparent lg:block dark:via-secondary-700">
@@ -56,7 +117,7 @@
                         <path d="m6.34 17.66-1.41 1.41" />
                         <path d="m19.07 4.93-1.41 1.41" />
                     </svg></button>
-                <a href="/" class="md:flex hidden hover:text-elysia-hover">
+                <a href="https://github.com/giridiwa44/elysia-ui-laravel" class="md:flex hidden hover:text-elysia-hover">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"
                         stroke-linejoin="round" class="lucide lucide-github-icon lucide-github w-5 h-5">
@@ -81,30 +142,3 @@
         </div>
     </div>
 </header>
-<div x-data="docSearch()" x-init="init()" @keydown.window.cmd.k.prevent="open = !open"
-    @keydown.window.ctrl.k.prevent="open = !open">
-
-    <!-- Trigger ada di atas -->
-
-    <!-- Modal -->
-    <div x-show="open" class="fixed inset-0 bg-secondary-900/50 flex items-start justify-center z-50 p-4">
-        <div class="bg-white dark:bg-gray-800 w-full max-w-xl rounded-lg shadow-lg p-4">
-
-
-            <input name="search" type="text" x-model="query" placeholder="Cari komponen..."
-                class="w-full p-2 outline-none border border-gray-300 rounded dark:bg-secondary-700 dark:text-white focus:border focus:border-pink-400"
-                autocomplete="off">
-
-            <ul class="mt-2 max-h-60 overflow-y-auto">
-                <template x-for="result in results" :key="result.item.url">
-                    <li>
-                        <a :href="result.item.url" x-text="result.item.title"
-                            class="block px-2 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700">📕</a>
-                    </li>
-                </template>
-            </ul>
-
-            <button @click="open = false" class="mt-2 text-sm text-gray-500 cursor-pointer">Tutup</button>
-        </div>
-    </div>
-</div>
